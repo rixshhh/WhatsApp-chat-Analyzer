@@ -5,8 +5,7 @@ import pandas as pd
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import nltk
 nltk.download("vader_lexicon")
-from fpdf import FPDF
-import io
+
 
 
 def fetch_stats(selected_user, df):
@@ -112,27 +111,3 @@ def sentiment_analysis(selected_user, df):
 
     sentiment_counts = df['sentiment'].value_counts(normalize=True) * 100
     return sentiment_counts, df
-
-
-def create_pdf_report(df, selected_user="Overall"):
-    pdf = FPDF()
-    pdf.add_page()
-     # Add Unicode font (DejaVu)
-    pdf.add_font("DejaVu", "", "DejaVuSans.ttf", uni=True)
-    pdf.set_font("DejaVu", '', 14)
-    pdf.cell(0, 10, f"WhatsApp Chat Analysis - {selected_user}", ln=True, align="C")
-
-    pdf.set_font("Arial", '', 12)
-    pdf.ln(10)
-    pdf.cell(0, 10, f"Total Messages: {len(df)}", ln=True)
-    pdf.cell(0, 10, f"Total Words: {df['message'].str.split().str.len().sum()}", ln=True)
-    pdf.cell(0, 10, f"Total Media Messages: {df['message'].str.contains('<Media omitted>').sum()}", ln=True)
-    
-    pdf.ln(10)
-    pdf.multi_cell(0, 10, "Sample Messages:\n" + "\n".join(df['message'].head(10).tolist()))
-
-    # Export PDF as bytes
-    pdf_output = io.BytesIO()
-    pdf.output(pdf_output)
-    pdf_output.seek(0)
-    return pdf_output
