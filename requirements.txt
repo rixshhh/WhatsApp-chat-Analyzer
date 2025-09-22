@@ -1,21 +1,21 @@
 # Core
-streamlit==1.38.0
-pandas==2.2.2
-numpy==1.26.4
+streamlit
+pandas
+numpy
 
 # Visualization
-matplotlib==3.9.2
-seaborn==0.13.2
-wordcloud==1.9.3
-plotly==5.23.0
+matplotlib
+seaborn
+wordcloud
+plotly
 
 # NLP & Text Processing
-nltk==3.9.1
-textblob==0.18.0.post0
-emoji==2.12.1
+nltk
+textblob
+emoji
 
 # Machine Learning (for sentiment/extra analysis if needed)
-scikit-learn==1.5.2
+scikit-learn
 
 # Utils
-python-dateutil==2.9.0.post0
+python-dateutil
