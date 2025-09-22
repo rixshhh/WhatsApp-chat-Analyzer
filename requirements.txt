@@ -3,11 +3,13 @@ streamlit
 pandas
 numpy
 
+
 # Visualization
 matplotlib
 seaborn
 wordcloud
 plotly
+urlextract
 
 # NLP & Text Processing
 nltk
